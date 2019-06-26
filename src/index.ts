@@ -42,6 +42,7 @@ export type OptionsType = {
    * areas for failed images.
   */
   imagePlaceholder?: string,
+  delayDraw?: number,
 }
 
 function getImageSize(domNode: HTMLElement, options: OptionsType = {}) {
@@ -69,7 +70,7 @@ export function toCanvas(
 ): Promise<HTMLCanvasElement> {
   return toSvgDataURL(domNode, options)
     .then(createImage)
-    .then(delay(100))
+    .then(delay(options.delayDraw || 100))
     .then((image) => {
       const canvas = document.createElement('canvas')
       const context = canvas.getContext('2d')!
