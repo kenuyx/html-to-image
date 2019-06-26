@@ -137,4 +137,5 @@ export default {
   toPng,
   toJpeg,
   toBlob,
+  canvasToBlob,
 }
